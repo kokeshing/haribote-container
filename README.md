@@ -16,3 +16,13 @@ $ docker export [コンテナID] | sudo tar -xv -f - -C /var/lib/haribote_contai
 $ ls /var/lib/haribote_container/haribote/rootfs
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 ```
+
+## docker-compose.yml
+
+Windowsなどはvolumeの設定に注意 絶対パスのほうが安心かもしれない
+
+- 例
+    /C/Users/user/src/haribote-container:/workspace
+
+レポジトリがそのままマウントされるように設定
+
