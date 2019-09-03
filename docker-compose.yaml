@@ -1,8 +1,8 @@
 version: '3'
 services:
-  rust:
+  haribote:
     build: .
     volumes:
-      - .:/workspace
+      - /C/Users/ennpe/src/haribote-container:/workspace
     tty: true
     privileged: true
