@@ -27,15 +27,6 @@ fn main() {
     .expect("Failed to unshare CLONE_NEWNS");
     println!("Unshared CLONE_NEWPID CLONE_NEWNS");
 
-    mount(
-        Some(""),
-        "/",
-        None::<&str>,
-        MsFlags::MS_SLAVE | MsFlags::MS_REC,
-        None::<&str>,
-    )
-    .expect("Failed to remount \"/\" MS_REC | MS_SLAVE");
-
     match fork() {
         Ok(ForkResult::Parent { child, .. }) => {
             match waitpid(child, None).expect("Failed to wait_pid")
@@ -61,6 +52,14 @@ fn main() {
                 None::<&str>,
             )
             .expect("Failed to bind mount container / onto itself");
+            mount(
+                Some(""),
+                "/",
+                None::<&str>,
+                MsFlags::MS_SLAVE | MsFlags::MS_REC,
+                None::<&str>,
+            )
+            .expect("Failed to remount \"/\" MS_REC | MS_SLAVE");
 
             // hostnameの設定
             sethostname("haribote_container").expect(
