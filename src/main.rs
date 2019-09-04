@@ -79,7 +79,7 @@ fn main() {
                     | MsFlags::MS_NOSUID,
                 None::<&str>,
             )
-            .expect("Failed to mount porcfs");
+            .expect("Failed to mount procfs");
             mount(
                 Some("sysfs"),
                 CONTAINER_SYS,
