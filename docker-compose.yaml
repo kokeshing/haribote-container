@@ -3,6 +3,6 @@ services:
   haribote:
     build: .
     volumes:
-      - /C/Users/ennpe/src/haribote-container:/workspace
+      - .:/workspace
     tty: true
     privileged: true
