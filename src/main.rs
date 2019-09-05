@@ -74,9 +74,7 @@ fn main() {
                 Some("proc"),
                 CONTAINER_PROC,
                 Some("proc"),
-                MsFlags::MS_NODEV
-                    | MsFlags::MS_NOEXEC
-                    | MsFlags::MS_NOSUID,
+                MsFlags::MS_MGC_VAL,
                 None::<&str>,
             )
             .expect("Failed to mount procfs");
@@ -84,7 +82,7 @@ fn main() {
                 Some("sysfs"),
                 CONTAINER_SYS,
                 Some("sysfs"),
-                MsFlags::MS_RDONLY,
+                MsFlags::MS_MGC_VAL,
                 None::<&str>,
             )
             .expect("Failed to mount sysfs");
