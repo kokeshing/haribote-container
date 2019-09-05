@@ -24,9 +24,7 @@ exit
 $ docker ps -a
 CONTAINER ID        IMAGE                   COMMAND                  CREATED              STATUS                      PORTS               NAMES
 [コンテナID]        ubuntu                  "/bin/bash"              About a minute ago   Exited (0) 14 seconds ago                       gifted_curran
-$ docker export [コンテナID] | ./rootfs
-$ ls ./rootfs
-bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+$ docker export [コンテナID] > rootfs.tar
 $ docker-compose up -d
 $ docker ps -a
 CONTAINER ID        IMAGE                   COMMAND                  CREATED              STATUS                      PORTS               NAMES
@@ -37,6 +35,8 @@ proc rootfs src target
 ```
 
 ### ファイルが存在するのにexecvがENOENTになる場合
+
+備忘録
 
 ```
 # ./target/debug/haribote-container
@@ -95,4 +95,5 @@ drwxr-xr-x 1 root root 4096 Sep  5 04:35 ..
 lrwxrwxrwx 1 root root   32 Feb  6  2019 ld-linux-x86-64.so.2 -> /lib/x86_64-linux-gnu/ld-2.24.so
 ```
 
-の通り,シンボリックリンクとなっているため,docker export時にこれがコピーされなかった可能性がある.
+の通り,シンボリックリンクとなっており,これが用意したルートファイルシステムにコピーできていなかった.
+Windowsのフォルダを経由したりするときには注意. tarで固めてADD(自動的に展開される)などを使う.
