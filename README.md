@@ -1,5 +1,9 @@
 # haribote-container
 
+## お願い
+
+本文中やソースコードに誤っているところやおかしいところがあった場合issueへ建てていてだけると大変ありがたいです.
+
 ## コンテナのファイルシステムの用意
 
 ### docker-composeのvolumeの設定
@@ -33,6 +37,38 @@ $ docker exec -it [コンテナID] /bin/bash
 root@haribote:/workspace# ls
 proc rootfs src target
 ```
+
+## 本文中に出てきたソースコードへのリンク(登場順)
+
+- [TCP request](https://github.com/moby/moby/blob/94b1cf4be3606ff731b3ca012e5eddf021f4608f/docker/docker.go#L170)
+- [createContainer()](https://github.com/moby/moby/blob/94b1cf4be3606ff731b3ca012e5eddf021f4608f/container.go#L50)
+- [createContainer()](https://github.com/moby/moby/blob/94b1cf4be3606ff731b3ca012e5eddf021f4608f/container.go#L84)
+- [start](https://github.com/moby/moby/blob/94b1cf4be3606ff731b3ca012e5eddf021f4608f/container.go#L193)
+- [LXC start()](https://github.com/lxc/lxc/blob/bdb3f44147bc1a55a97131b4b39d42844ae4fb9e/src/lxc/start.c#L823)
+
+## コンテナ関係で非常に参考になるサイトのリンク集
+
+本文で解説したのはかなりゆるくしていたりはしょっていたりするので是非興味があればリンク先も見てみるといいと思います.
+
+- [コンテナ未経験新人が学ぶコンテナ技術入門](https://www.slideshare.net/KoheiTokunaga/ss-122754942)
+
+コンテナについて非常に詳しくまとめられたスライド.読んでて自分の書いてるやついらないんじゃないか？になるほど詳しく分かりやすくまとめられている.
+
+- [コマンドを叩いて遊ぶ 〜コンテナ仮想、その裏側〜](https://tech.retrieva.jp/entry/2019/04/16/155828)
+
+シェルでコマンドを叩いてコンテナ環境を作成している.これも読んでて自分の書いてるやついらないんじゃないか？になるほど丁寧に解説されている.
+
+- [How does Docker work?](https://cameronlonsdale.com/2019/03/25/how-does-docker-work/)
+
+英語.Dockerの2013からなんと2019の動きも解説されているサイト.これも読んでて自分の書いてるやついらないんじゃないか？になるほど詳しく分かりやすくまとめられている.
+
+- [コンテナのしくみ](https://medium.com/@11Takanori/コンテナのしくみ-ac6f4a83eda4)
+
+まさかRustで自作コンテナ書くなんて人はあんまいないだろうと思っていたら締切1週間前頃に見つけてアになったサイト.自分の書いてるやつの新規性が素人の詳しい解説だけになった瞬間である.
+
+- [MINCSによるLinuxコンテナ実装の裏側](https://qiita.com/mhiramat/items/5edd7eb479f9dca45b9c#%E3%81%93%E3%82%8C%E3%81%AF%E4%BD%95%E3%81%8B)
+
+シェルで実装されたコンテナランタイムのMINCSの作者による解説.これも読んでて(ry
 
 ### ファイルが存在するのにexecvがENOENTになる場合
 
